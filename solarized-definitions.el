@@ -84,6 +84,8 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
                                (if solarized-broken-srgb 2 1))
                            (case (display-color-cells)
                              (16 4)
+                             (88 4)
+                             (256 4)
                              (8  5)
                              (otherwise 3)))))
              (nth index (assoc name solarized-colors)))))
@@ -309,6 +311,9 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
              (font-lock-other-emphasized-face ((t (,@fmt-bldi ,@fg-violet))))
              (font-lock-regexp-grouping-backslash
               ((t (,@fmt-none ,@fg-yellow))))
+             ;; sh
+             (sh-heredoc ((t (:foreground nil :inherit font-lock-string-face))))
+             (sh-quoted-exec ((t (,@fmt-none))))
              ;; info
              (info-xref ((t (,@fmt-undr ,@fg-blue))))
              (info-xref-visited ((t (,@fg-magenta :inherit info-xref))))
@@ -324,6 +329,14 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
              (org-started-kwd-face ((t (,@fg-yellow ,@bg-base03))))
              (org-cancelled-kwd-face ((t (,@fg-green ,@bg-base03))))
              (org-delegated-kwd-face ((t (,@fg-cyan ,@bg-base03))))
+             (org-level-1 ((t (,@fmt-none ,@fg-blue))))
+             (org-level-2 ((t (,@fmt-none ,@fg-cyan))))
+             (org-level-3 ((t (,@fmt-none ,@fg-yellow))))
+             (org-level-4 ((t (,@fg-violet))))
+             (org-level-5 ((t (,@fmt-none ,@fg-base1))))
+             (org-level-6 ((t (,@fmt-none ,@fg-base01))))
+             (org-level-7 ((t (,@fmt-none ,@fg-orange))))
+             (org-level-8 ((t (,@fmt-none ,@fg-violet))))
              ;; table
              (table-cell ((t (,@fmt-none ,@fg-base0 ,@bg-back))))
              ;; outline - pandocBlockQuoteLeader*
@@ -351,6 +364,21 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
               ((t (,@fg-base1 ,@bg-base02 :box (:line-width 1)
                               :inherit default))))
              (widget-single-line-field ((t (:inherit widget-field))))
+             ;; helm
+             (helm-source-header ((t (,@fg-base01 ,@bg-base02 :height 1.2 ,@fmt-none))))
+             (helm-ff-directory ((t (,@fg-cyan :background nil))))
+             (helm-candidate-number ((t (,@fmt-undr ,@fg-blue :background nil))))
+             (helm-ff-file ((t (:inherit default))))
+             (helm-ff-executable ((t (,@fg-green))))
+             (helm-selection ((t (,@bg-blue ,@fg-base02 ,@fmt-none))))
+             ;; iedit
+             (iedit-occurrence ((t (,@fg-base3 ,@bg-violet))))
+             ;; eldoc
+             (eldoc-highlight-function-argument ((t (,@fmt-undr ,@fg-cyan))))
+             ;; mmm-mode
+             (mmm-code-submode-face ((t (:background nil ,@fmt-ital))))
+             (mmm-output-submode-face ((t (:background nil ,@fmt-undi))))
+             (mmm-comment-submode-face ((t (:inherit font-lock-comment-face))))
              ;; extra modules
              ;; -------------
              ;; Flymake
@@ -378,6 +406,9 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
              (jabber-roster-user-offline ((t (,@fg-base01))))
              (jabber-roster-user-online ((t (,@fmt-bold ,@fg-blue))))
              (jabber-roster-user-xa ((t (,@fmt-ital ,@fg-magenta))))
+             ;; ace-jump-mode
+             (ace-jump-face-background ((t (,@fg-base01 :inverse-video nil))))
+             (ace-jump-face-foreground ((t (,@fg-red :inverse-video nil))))
              ;; gnus - these are taken from mutt, not VIM
              (gnus-cite-1 ((t (,@fmt-none ,@fg-blue)))) ; quoted
              (gnus-cite-2 ((t (,@fmt-none ,@fg-cyan)))) ; quoted1
@@ -464,6 +495,33 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
              (message-header-subject ((t (,@fg-base00))))
              (message-header-cc ((t (,@fmt-bold ,@fg-green))))
              (message-header-to ((t (,@fmt-bold ,@fg-base1))))
+             ;; wanderlust
+             (wl-highlight-folder-few-face ((t (,@fg-red))))
+             (wl-highlight-folder-many-face ((t (,@fg-red))))
+             (wl-highlight-folder-path-face ((t (,@fg-orange))))
+             (wl-highlight-folder-unread-face ((t (,@fg-blue))))
+             (wl-highlight-folder-zero-face ((t (,@fg-base0))))
+             (wl-highlight-folder-unknown-face ((t (,@fg-blue))))
+             (wl-highlight-message-citation-header ((t (,@fg-red))))
+             (wl-highlight-message-cited-text-1 ((t (,@fg-red))))
+             (wl-highlight-message-cited-text-2 ((t (,@fg-green))))
+             (wl-highlight-message-cited-text-3 ((t (,@fg-blue))))
+             (wl-highlight-message-cited-text-4 ((t (,@fg-blue))))
+             (wl-highlight-message-header-contents-face ((t (,@fg-green))))
+             (wl-highlight-message-headers-face ((t (,@fg-red))))
+             (wl-highlight-message-important-header-contents ((t (,@fg-green))))
+             (wl-highlight-message-header-contents ((t (,@fg-green))))
+             (wl-highlight-message-important-header-contents2 ((t (,@fg-green))))
+             (wl-highlight-message-signature ((t (,@fg-green))))
+             (wl-highlight-message-unimportant-header-contents ((t (,@fg-base0))))
+             (wl-highlight-summary-answered-face ((t (,@fg-blue))))
+             (wl-highlight-summary-disposed-face ((t (,@fg-base0 ,@fmt-ital))))
+             (wl-highlight-summary-new-face ((t (,@fg-blue))))
+             (wl-highlight-summary-normal-face ((t (,@fg-base0))))
+             (wl-highlight-summary-thread-top-face ((t (,@fg-yellow))))
+             (wl-highlight-thread-indent-face ((t (,@fg-magenta))))
+             (wl-highlight-summary-refiled-face ((t (,@fg-base0))))
+             (wl-highlight-summary-displaying-face ((t (,@fmt-undb))))
              ;; parenface
              (paren-face ((t (,@fg-base01))))
              ;; rainbow-delimiters
@@ -503,15 +561,43 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
              (rcirc-server ((t (:foreground ,base1))))
              (rcirc-timestamp ((t (:foreground ,base01))))
              ;; ERC
+             (erc-action-face ((t (:inherit erc-default-face))))
+             (erc-bold-face ((t (,@fmt-bold))))
+             (erc-current-nick-face ((t (,@fg-blue ,@fmt-bold))))
+             (erc-dangerous-host-face ((t (:inherit font-lock-warning))))
+             (erc-default-face ((t (,@fg-base0 ,@bg-base03 ,@fmt-none))))
+             (erc-direct-msg-face ((t (:inherit erc-default))))
+             (erc-error-face ((t (:inherit font-lock-warning))))
+             (erc-fool-face ((t (:inherit erc-default))))
+             (erc-highlight-face ((t (:inherit hover-highlight))))
              (erc-input-face ((t (:foreground ,base01))))
              (erc-keyword-face ((t (,@fmt-bldi ,@fg-yellow))))
              (erc-my-nick-face ((t (:foreground ,blue))))
              (erc-nick-default-face ((t (,@fmt-none ,@fg-cyan))))
              (erc-notice-face ((t (,@fmt-none ,@fg-blue))))
+             (erc-pal-face ((t (,@fg-orange ,@fmt-bold))))
+             (erc-prompt-face ((t (,@fg-orange ,@bg-base03 ,@fmt-bold))))
              (erc-timestamp-face ((t (:foreground ,base01))))
+             (erc-underline-face ((t (,@fmt-undr))))             
              ;;font-latex
              (font-latex-warning-face ((t (,@fg-red))))
              (font-latex-sectioning-5-face ((t (,@fg-violet))))
+             ;; tuareg mode
+             (tuareg-font-lock-governing-face ((t (,@fg-green ,@fmt-bold))))
+             (tuareg-font-lock-multistage-face ((t (,@fg-blue ,@bg-base02 ,@fmt-bold))))
+             (tuareg-font-lock-operator-face ((t (,@fg-base1))))
+             (tuareg-font-lock-error-face ((t (,@fg-magenta ,@bg-base02 ,@fmt-bold))))
+             (tuareg-font-lock-interactive-output-face ((t (,@fg-violet))))
+             (tuareg-font-lock-interactive-error-face ((t (,@fg-red))))
+             (caml-types-def-dace ((t (,@bg-base02))))
+             (caml-types-expr-face ((t (,@bg-base02))))
+             (caml-types-occ-face ((t (,@bg-base02))))
+             (caml-types-scope-face ((t (,@bg-base02))))
+             (caml-types-typed-face ((t (,@bg-base02))))
+             ;; e2wm
+             (e2wm:face-history-list-normal ((t (,@fg-violet ))))
+             (e2wm:face-history-list-select1 ((t (,@fg-orange ,bg-base03))))
+             (e2wm:face-history-list-select2 ((t (,@fg-cyan ,bg-base03))))
              ;;flyspell
              (flyspell-incorrect ((t (,@fg-red))))
              (flyspell-duplicate ((t (,@fg-yellow)))))
