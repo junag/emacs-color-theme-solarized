@@ -78,9 +78,10 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
    capabilities, etc.")
 
 (defvar which-flet
-  (if (and (>= emacs-major-version 24) (> emacs-minor-version 2))
-      (fset 'which-flet 'cl-flet)
-    (fset 'which-flet 'flet))
+  (if (or (> emacs-major-version 24)
+        (and (>= emacs-major-version 24) (> emacs-minor-version 2)))
+    (fset 'which-flet 'cl-flet)
+  (fset 'which-flet 'flet))
   "This variable will store either flet or cl-flet depending on the Emacs
   version. flet was deprecated in in 24.3")
 
@@ -202,6 +203,7 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
              (isearch ((t (,@fmt-stnd ,@fg-orange ,@bg-back)))) ; IncSearch
              (isearch-fail ((t (,@fmt-stnd ,@fg-orange ,@bg-back)))) ; IncSearch
              (lazy-highlight ((t (,@fmt-revr ,@fg-yellow ,@bg-back)))) ; Search
+             (match ((t (,@fmt-revr ,@fg-yellow ,@bg-back)))) ; Occur
              (link ((t (,@fmt-undr ,@fg-violet))))
              (link-visited ((t (,@fmt-undr ,@fg-magenta))))
              (menu ((t (,@fg-base0 ,@bg-base02))))
@@ -389,9 +391,12 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
              (mmm-comment-submode-face ((t (:inherit font-lock-comment-face))))
              ;; extra modules
              ;; -------------
-	     ;; bm visual bookmarks
-	     (bm-fringe-face ((t (,@bg-orange ,@fg-base03))))
-	     (bm-fringe-persistent-face ((t (,@bg-blue ,@fg-base03))))
+             ;; ace-jump-mode
+             (ace-jump-face-background ((t (,@fmt-none ,@fg-base01))))
+             (ace-jump-face-foreground ((t (,@fmt-bold ,@fg-red))))
+             ;; bm visual bookmarks
+             (bm-fringe-face ((t (,@bg-orange ,@fg-base03))))
+             (bm-fringe-persistent-face ((t (,@bg-blue ,@fg-base03))))
              ;; Flymake
              (flymake-errline ((t (,@fmt-revr ,@fg-red ,@bg-back)))) ; ErrorMsg
              (flymake-warnline ; WarningMsg
@@ -417,9 +422,6 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
              (jabber-roster-user-offline ((t (,@fg-base01))))
              (jabber-roster-user-online ((t (,@fmt-bold ,@fg-blue))))
              (jabber-roster-user-xa ((t (,@fmt-ital ,@fg-magenta))))
-             ;; ace-jump-mode
-             (ace-jump-face-background ((t (,@fg-base01 :inverse-video nil))))
-             (ace-jump-face-foreground ((t (,@fg-red :inverse-video nil))))
              ;; git-gutter
              (git-gutter:modified ((t (,@fg-violet))))
              (git-gutter:added ((t (,@fg-green))))
@@ -616,16 +618,16 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
              ;;flyspell
              (flyspell-incorrect ((t (,@fg-red))))
              (flyspell-duplicate ((t (,@fg-yellow))))
-	     ;;ansi-term
-	     (term-color-black ((t ( ,@fg-base02))))
-	     (term-color-red ((t ( ,@fg-red))))
-	     (term-color-green ((t ( ,@fg-green))))
-	     (term-color-yellow ((t ( ,@fg-yellow))))
-	     (term-color-blue ((t ( ,@fg-blue))))
-	     (term-color-magenta ((t ( ,@fg-magenta))))
-	     (term-color-cyan ((t ( ,@fg-cyan))))
-	     (term-color-white ((t ( ,@fg-base00)))))
-
+             ;;ansi-term
+             (term-color-black ((t ( ,@fg-base02))))
+             (term-color-red ((t ( ,@fg-red))))
+             (term-color-green ((t ( ,@fg-green))))
+             (term-color-yellow ((t ( ,@fg-yellow))))
+             (term-color-blue ((t ( ,@fg-blue))))
+             (term-color-magenta ((t ( ,@fg-magenta))))
+             (term-color-cyan ((t ( ,@fg-cyan))))
+             (term-color-white ((t ( ,@fg-base00)))))
+            
             ((foreground-color . ,(when (<= 16 (display-color-cells)) base0))
              (background-color . ,back)
              (background-mode . ,mode)
