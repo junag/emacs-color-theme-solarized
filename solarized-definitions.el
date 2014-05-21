@@ -86,7 +86,7 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
   version. flet was deprecated in in 24.3")
 
 (defun solarized-color-definitions (mode)
-  (which-flet ((find-color (name)                   
+  (which-flet ((find-color (name)
                            (let* ((index (if window-system
                                              (if solarized-degrade
                                                  3
@@ -599,7 +599,7 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
              (erc-pal-face ((t (,@fg-orange ,@fmt-bold))))
              (erc-prompt-face ((t (,@fg-orange ,@bg-base03 ,@fmt-bold))))
              (erc-timestamp-face ((t (:foreground ,base01))))
-             (erc-underline-face ((t (,@fmt-undr))))             
+             (erc-underline-face ((t (,@fmt-undr))))
              ;;font-latex
              (font-latex-warning-face ((t (,@fg-red))))
              (font-latex-sectioning-5-face ((t (,@fg-violet))))
@@ -631,7 +631,7 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
              (term-color-magenta ((t ( ,@fg-magenta))))
              (term-color-cyan ((t ( ,@fg-cyan))))
              (term-color-white ((t ( ,@fg-base00)))))
-            
+
             ((foreground-color . ,(when (<= 16 (display-color-cells)) base0))
              (background-color . ,back)
              (background-mode . ,mode)
