@@ -1,3 +1,10 @@
+(eval-when-compile
+  (unless (require 'cl-lib nil t)
+    (require 'cl)
+    (defalias 'cl-case 'case)
+    (defalias 'cl-copy-list 'copy-list))
+  )
+
 (defconst solarized-description
   "Color theme by Ethan Schoonover, created 2011-03-24.
 Ported to Emacs by Greg Pfeil, http://ethanschoonover.com/solarized.")
@@ -86,7 +93,7 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
 (defun solarized-face-for-index (facespec index &optional light)
   "Creates a face from facespec where the colors use the names from
   `solarized-colors`."
-  (let ((new-fontspec (copy-list facespec)))
+  (let ((new-fontspec (cl-copy-list facespec)))
     (dolist (property '(:foreground :background :color))
       (let ((color-name (plist-get new-fontspec property)))
         (when color-name
@@ -103,7 +110,7 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
             (setf color-name 'base03))
           (when light
             (setf color-name
-                  (case color-name
+                  (cl-case color-name
                     (base03 'base3)
                     (base02 'base2)
                     (base01 'base1)
@@ -271,7 +278,7 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
                 (custom-state (,@fg-green))
                 (custom-variable-tag (,@fg-base1))
                 ;; diff - DiffAdd, DiffChange, DiffDelete, and DiffText
-                ,@(case solarized-diff-mode
+                ,@(cl-case solarized-diff-mode
                     (high
                      `((diff-added (,@fmt-revr ,@fg-green))
                        (diff-changed (,@fmt-revr ,@fg-yellow))
@@ -418,6 +425,9 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
                 (mmm-comment-submode-face (:inherit font-lock-comment-face))
                 ;; extra modules
                 ;; -------------
+                ;; col-highlight -- Highlight the current column.
+                ;; http://www.emacswiki.org/emacs/col-highlight.el
+                (col-highlight (,@bg-base02))
                 ;; ace-jump-mode
                 (ace-jump-face-background (,@fmt-none ,@fg-base01))
                 (ace-jump-face-foreground (,@fmt-bold ,@fg-red))
