@@ -801,6 +801,7 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
                 (erc-underline-face (,@fmt-undr))
                 ;;font-latex
                 (font-latex-warning-face (,@fg-red))
+                (font-latex-script-char-face (,@fg-red))
                 (font-latex-sectioning-5-face (,@fg-violet))
                 ;; tuareg mode
                 (tuareg-font-lock-governing-face (,@fg-green ,@fmt-bold))
