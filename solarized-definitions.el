@@ -262,6 +262,7 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
                 ;; compilation
                 (compilation-info (,@fmt-bold ,@fg-green))
                 (compilation-warning (,@fmt-bold ,@fg-orange))
+                (compilation-error (,@fmt-bold ,@fg-red))
                 ;; custom
                 (custom-button
                  (,@fg-base1 ,@bg-base02 :box (:line-width 2 :style released-button)))
@@ -807,14 +808,16 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
                 (tuareg-font-lock-governing-face (,@fg-green ,@fmt-bold))
                 (tuareg-font-lock-multistage-face (,@fg-blue ,@bg-base02 ,@fmt-bold))
                 (tuareg-font-lock-operator-face (,@fg-base1))
+                (tuareg-font-lock-constructor-face (,@fg-base1))
                 (tuareg-font-lock-error-face (,@fg-magenta ,@bg-base02 ,@fmt-bold))
                 (tuareg-font-lock-interactive-output-face (,@fg-violet))
                 (tuareg-font-lock-interactive-error-face (,@fg-red))
-                (caml-types-def-dace (,@bg-base02))
+                (caml-types-def-face (,@bg-base02))
                 (caml-types-expr-face (,@bg-base02))
                 (caml-types-occ-face (,@bg-base02))
                 (caml-types-scope-face (,@bg-base02))
                 (caml-types-typed-face (,@bg-base02))
+                (ocaml-help-face (,@fg-green ,@bg-base02))
                 ;; e2wm
                 (e2wm:face-history-list-normal (,@fg-violet ))
                 (e2wm:face-history-list-select1 (,@fg-orange ,bg-base03))
